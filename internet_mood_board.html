@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internet Mood Board</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #f4f4f4;
+      color: #222;
+    }
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      margin: 0 0 0.5rem;
+      font-size: 2rem;
+    }
+    p {
+      margin: 0;
+      font-size: 1rem;
+      color: #666;
+    }
+    .mood-board {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 2rem;
+      gap: 1rem;
+    }
+    .item {
+      position: relative;
+      width: 200px;
+      min-height: 200px;
+      background-color: #fff;
+      border: 2px dashed #aaa;
+      padding: 1rem;
+      text-align: center;
+      cursor: grab;
+      transition: transform 0.2s;
+    }
+    .item.dragging {
+      opacity: 0.5;
+      transform: scale(1.05);
+    }
+    .item img {
+      max-width: 100%;
+      height: auto;
+    }
+    blockquote {
+      font-style: italic;
+      color: #444;
+    }
+    a {
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .user-selection {
+      width: 100%;
+      text-align: center;
+      padding: 2rem;
+      background-color: #eaeaea;
+      margin-top: 2rem;
+    }
+    .url-input-container {
+      margin: 1rem auto;
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .url-input-container input {
+      padding: 0.5rem;
+      width: 300px;
+    }
+    .url-input-container button {
+      padding: 0.5rem;
+      cursor: pointer;
+    }
+    .delete-btn {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 16px;
+      line-height: 0;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Internet Mood Board</h1>
+    <p>Click and drag to rearrange the items that represent you.</p>
+  </header>
+
+  <main>
+    <section class="mood-board" id="source-board">
+      <!-- 24 Diverse Mood Board Items -->
+      <div class="item" draggable="true"><img src="https://placekitten.com/200/201" alt="kitten" /></div>
+      <div class="item" draggable="true"><img src="https://placebear.com/200/200" alt="bear" /></div>
+      <div class="item" draggable="true"><img src="https://picsum.photos/id/1043/200/200" alt="flowers" /></div>
+      <div class="item" draggable="true"><img src="https://picsum.photos/id/1062/200/200" alt="urban nature" /></div>
+      <div class="item" draggable="true"><img src="https://picsum.photos/id/1080/200/200" alt="shadows" /></div>
+      <div class="item" draggable="true"><img src="https://images.unsplash.com/photo-1503437313881-503a91226402?fit=crop&w=200&h=200" alt="cyberpunk 1" /></div>
+      <div class="item" draggable="true"><img src="https://images.unsplash.com/photo-1549921296-3a4d92a51c6c?fit=crop&w=200&h=200" alt="cyberpunk 2" /></div>
+      <div class="item" draggable="true"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?fit=crop&w=200&h=200" alt="nature mountains" /></div>
+      <div class="item" draggable="true"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?fit=crop&w=200&h=200" alt="nature forest" /></div>
+      <div class="item" draggable="true"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?fit=crop&w=200&h=200" alt="nature lake" /></div>
+
+      <div class="item" draggable="true"><blockquote>"Creativity takes courage." – Matisse</blockquote></div>
+      <div class="item" draggable="true"><blockquote>"I contain multitudes." – Walt Whitman</blockquote></div>
+      <div class="item" draggable="true"><blockquote>"Make visible what, without you, might never be seen." – Robert Bresson</blockquote></div>
+      <div class="item" draggable="true"><blockquote>"Stay curious, stay weird." – Anonymous</blockquote></div>
+      <div class="item" draggable="true"><blockquote>"Simplicity is the ultimate sophistication." – Da Vinci</blockquote></div>
+      <div class="item" draggable="true"><blockquote>"Every act of creation is first an act of destruction." – Picasso</blockquote></div>
+      <div class="item" draggable="true"><blockquote>"The eye should learn to listen before it looks." – Robert Frank</blockquote></div>
+
+      <div class="item" draggable="true"><a href="https://www.wikipedia.org" target="_blank">Knowledge is power</a></div>
+      <div class="item" draggable="true"><a href="https://are.na" target="_blank">Are.na – creative research</a></div>
+      <div class="item" draggable="true"><a href="https://archive.org" target="_blank">Internet Archive</a></div>
+      <div class="item" draggable="true"><a href="https://solar.lowtechmagazine.com/" target="_blank">Low Tech Magazine</a></div>
+      <div class="item" draggable="true"><a href="https://thecreativeindependent.com" target="_blank">Creative Independent</a></div>
+      <div class="item" draggable="true"><a href="https://www.poetryfoundation.org/" target="_blank">Poetry Foundation</a></div>
+    </section>
+
+    <section class="user-selection">
+      <h2>Your Personal Space</h2>
+      <p>Drag your favorite images or quotes here to create a personalized section.</p>
+      <div class="url-input-container">
+        <input type="text" id="image-url" placeholder="Paste image URL here" />
+        <button onclick="addCustomImage()">Add Image</button>
+      </div>
+      <div class="mood-board" id="user-space"></div>
+    </section>
+  </main>
+
+  <script>
+    let draggedItem = null;
+
+    function addDragEvents(item) {
+      item.addEventListener('dragstart', (e) => {
+        draggedItem = item;
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/html', item.innerHTML);
+        item.classList.add('dragging');
+      });
+      item.addEventListener('dragend', () => {
+        item.classList.remove('dragging');
+      });
+    }
+
+    function addDeleteButton(item) {
+      const btn = document.createElement('button');
+      btn.className = 'delete-btn';
+      btn.innerText = '×';
+      btn.onclick = () => item.remove();
+      item.appendChild(btn);
+    }
+
+    function makeDroppable(container) {
+      container.addEventListener('dragover', (e) => {
+        e.preventDefault();
+      });
+      container.addEventListener('drop', (e) => {
+        e.preventDefault();
+        if (draggedItem) {
+          const clone = draggedItem.cloneNode(true);
+          addDragEvents(clone);
+          if (container.id === 'user-space') addDeleteButton(clone);
+          container.appendChild(clone);
+          if (draggedItem.parentNode !== container && draggedItem.parentNode.id === 'user-space') {
+            draggedItem.remove();
+          }
+        }
+      });
+    }
+
+    document.querySelectorAll('.item').forEach(addDragEvents);
+    makeDroppable(document.getElementById('user-space'));
+    makeDroppable(document.getElementById('source-board'));
+
+    function addCustomImage() {
+      const urlInput = document.getElementById('image-url');
+      const imageUrl = urlInput.value.trim();
+      if (!imageUrl) return alert("Please enter a valid image URL.");
+
+      const newItem = document.createElement('div');
+      newItem.className = 'item';
+      newItem.draggable = true;
+      newItem.innerHTML = `<img src="${imageUrl}" alt="custom image" />`;
+      addDragEvents(newItem);
+      addDeleteButton(newItem);
+      document.getElementById('user-space').appendChild(newItem);
+      urlInput.value = '';
+    }
+  </script>
+</body>
+</html>
